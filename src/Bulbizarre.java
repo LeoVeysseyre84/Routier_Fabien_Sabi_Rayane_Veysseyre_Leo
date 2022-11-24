@@ -1,7 +1,11 @@
-public class Bulbizarre extends Pokemon {
+public class Bulbizarre extends Pokemon implements Marchant{
 
+    public Bulbizarre(String nom, int vie, Soin soin, Pokeball pokeball) {
+        super(nom, vie, soin, pokeball);
+    }
 
-    public Bulbizarre(String nom, int vie, Soin soin) {
-        super(nom, vie, soin);
+    @Override
+    public void marche() {
+
     }
 }

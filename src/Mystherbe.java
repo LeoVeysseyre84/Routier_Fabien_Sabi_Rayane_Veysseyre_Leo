@@ -1,6 +1,10 @@
-public class Mystherbe extends Pokemon {
+public class Mystherbe extends Pokemon implements Marchant{
+    public Mystherbe(String nom, int vie, Soin soin, Pokeball pokeball) {
+        super(nom, vie, soin, pokeball);
+    }
 
-    public Mystherbe(String nom, int type) {
-        super(nom,type);
+    @Override
+    public void marche() {
+
     }
 }
