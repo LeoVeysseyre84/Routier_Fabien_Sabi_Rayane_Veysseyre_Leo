@@ -1,10 +1,5 @@
-public abstract class Plante extends Pokemon{
-
-
-    public Plante(String nom, int vie, Soin soin, Pokeball pokeball) {
-        super(nom, vie, soin, pokeball);
-    }
-
+public interface  Plante{
+    public abstract void faiblesse();
     public abstract void estPassif();
 
 

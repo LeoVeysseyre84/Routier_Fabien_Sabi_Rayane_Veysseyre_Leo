@@ -1,15 +1,22 @@
 public abstract class Pokemon {
     String nom;
     String sexe;
+    int numeroPokedex;
     int vie = 100;
     Soin soin;
     Pokeball pokeball;
+    Attaque attaque;
 
-    public Pokemon(String nom, int vie, Soin soin, Pokeball pokeball) {
+
+
+    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
         this.nom = nom;
+        this.sexe = sexe;
+        this.numeroPokedex = numeroPokedex;
         this.vie = vie;
         this.soin = soin;
         this.pokeball = pokeball;
+        this.attaque = attaque;
     }
 
     public Pokemon() {
@@ -42,16 +49,32 @@ public abstract class Pokemon {
 
 
     // Etat du Pokemon vis a vis de la Pokeball
-    public void rentre(){
+    public void rentreDansPokeball(){
         if (pokeball.estDansPokeball()){
             return;
         }
         pokeball = Pokeball.DEDANS;
     }
-    public void sort(){
+    public void sortDePokeball(){
         if (pokeball.estPasDansPokeball()){
             return;
         }
         pokeball = Pokeball.DEHORS;
+    }
+
+
+
+    // Etat d'attaque du Pokemon
+    public void attaque(){
+        if (attaque.Attaquant()){
+            return;
+        }
+        attaque = Attaque.EstEnTrainDAttaquer;
+    }
+    public void nAttaquePas(){
+        if (attaque.AttaquePas()){
+            return;
+        }
+        attaque = Attaque.AttaquePas;
     }
 }

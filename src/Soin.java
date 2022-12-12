@@ -12,6 +12,7 @@ public enum Soin {
     Faible {
         public boolean SeFaitSoigner() {
             return false;
+
         }
 
         public boolean BesoinSoin() {
