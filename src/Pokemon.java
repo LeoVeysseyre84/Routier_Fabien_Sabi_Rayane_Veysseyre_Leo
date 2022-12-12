@@ -19,6 +19,10 @@ public abstract class Pokemon {
         this.attaque = attaque;
     }
 
+    public Pokemon() {
+
+    }
+
     // Etat de santé du Pokemon
     public void bonneSanté(){
         if (!soin.BesoinSoin() && !soin.SeFaitSoigner()){
