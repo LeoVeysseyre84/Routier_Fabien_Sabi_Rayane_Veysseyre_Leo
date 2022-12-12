@@ -1,12 +1,18 @@
-public class Caninos extends Pokemon implements Marchant{
+public class Caninos extends Pokemon implements Feu{
 
 
-    public Caninos(String nom, int vie, Soin soin, Pokeball pokeball) {
-        super(nom, vie, soin, pokeball);
+    public Caninos(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
+        super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+    }
+
+
+    @Override
+    public void faiblesse() {
+
     }
 
     @Override
-    public void marche() {
+    public void estAgressif() {
 
     }
 }

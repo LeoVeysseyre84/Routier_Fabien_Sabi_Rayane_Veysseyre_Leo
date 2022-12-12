@@ -1,10 +1,16 @@
-public class Mystherbe extends Pokemon implements Marchant{
-    public Mystherbe(String nom, int vie, Soin soin, Pokeball pokeball) {
-        super(nom, vie, soin, pokeball);
+public class Mystherbe extends Pokemon implements Plante{
+    public Mystherbe(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
+        super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+    }
+
+
+    @Override
+    public void faiblesse() {
+
     }
 
     @Override
-    public void marche() {
+    public void estPassif() {
 
     }
 }

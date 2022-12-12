@@ -1,10 +1,16 @@
-public class Magicarpe extends Pokemon implements Nageant{
-    public Magicarpe(String nom, int vie, Soin soin, Pokeball pokeball) {
-        super(nom, vie, soin, pokeball);
+public class Magicarpe extends Pokemon implements Eau{
+    public Magicarpe(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
+        super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+    }
+
+
+    @Override
+    public void estRapide() {
+
     }
 
     @Override
-    public void nage() {
+    public void faiblesse() {
 
     }
 }
