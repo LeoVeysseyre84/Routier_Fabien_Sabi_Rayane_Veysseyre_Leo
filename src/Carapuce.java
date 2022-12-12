@@ -5,10 +5,15 @@ public class Carapuce extends Pokemon implements Eau{
         super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
     }
 
-
+    public void  PistoletAO(){
+        System.out.println("Carapuce utilise Pistolet à O");
+    }
+    public void LaserGlace(){
+        System.out.println("Carapuce utilise Laser Glace");
+    }
     @Override
     public void estRapide() {
-
+        System.out.println("Carapuce est est plus faible face au type Plante et plus fort face au type Feu");
     }
 
     @Override

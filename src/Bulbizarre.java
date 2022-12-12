@@ -4,10 +4,17 @@ public class Bulbizarre extends Pokemon implements Plante{
         super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
     }
 
+    public void FouetLianes(){
+        System.out.println("Bulbizarre utilise Fouet Lianes");
+    }
+
+    public void Synthèse(){
+        System.out.println("Bulbizarre utilise Synthèse");
+    }
 
     @Override
     public void faiblesse() {
-
+        System.out.println("Bulbizarre est est plus faible face au type Feu et plus fort face au type Eau");
     }
 
     @Override

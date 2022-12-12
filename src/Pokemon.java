@@ -7,6 +7,8 @@ public abstract class Pokemon {
     Pokeball pokeball;
     Attaque attaque;
 
+
+
     public Pokemon(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
         this.nom = nom;
         this.sexe = sexe;
@@ -55,6 +57,7 @@ public abstract class Pokemon {
         }
         pokeball = Pokeball.DEHORS;
     }
+
 
 
     // Etat d'attaque du Pokemon

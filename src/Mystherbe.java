@@ -3,10 +3,16 @@ public class Mystherbe extends Pokemon implements Plante{
         super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
     }
 
+    public void VoleVie(){
+        System.out.println("Mystherbe utilise Vole-vie");
+    }
+    public void PoudreToxik(){
+        System.out.println("Mystherbe utilise Poudre Toxik ");
+    }
 
     @Override
     public void faiblesse() {
-
+        System.out.println("Mystherbe est est plus faible face au type Feu et plus fort face au type Feu");
     }
 
     @Override

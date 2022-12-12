@@ -5,9 +5,16 @@ public class Dracaufeu extends Pokemon implements Feu{
         super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
     }
 
+    public void LanceFlammes(){
+        System.out.println("Dracaufeu utilise Lance-Flammes");
+    }
+    public void Aeropique(){
+        System.out.println("Dracaufeu utilise Aéropique");
+    }
 
     @Override
     public void faiblesse() {
+        System.out.println("Dracaufeu est est plus faible face au type Eau et plus fort face au type Plante");
 
     }
 
