@@ -1,7 +1,7 @@
 public abstract class Pokemon {
     String nom;
     String sexe;
-    int vie;
+    int vie = 100;
     Soin soin;
     Pokeball pokeball;
 
@@ -10,6 +10,10 @@ public abstract class Pokemon {
         this.vie = vie;
         this.soin = soin;
         this.pokeball = pokeball;
+    }
+
+    public Pokemon() {
+
     }
 
     // Etat de santé du Pokemon
