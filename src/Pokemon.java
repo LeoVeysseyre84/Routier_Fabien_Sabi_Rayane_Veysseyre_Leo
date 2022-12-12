@@ -2,7 +2,7 @@ public abstract class Pokemon {
     String nom;
     String sexe;
     int numeroPokedex;
-    int vie;
+    int vie = 100;
     Soin soin;
     Pokeball pokeball;
     Attaque attaque;
