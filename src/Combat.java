@@ -1,13 +1,10 @@
+import java.sql.SQLOutput;
 import java.util.Locale;
 import java.util.Scanner;
 
 public class Combat extends Pokemon implements Runnable {
     String type;
     int vieAdversaire = 100;
-
-    public Combat(String nom, int vie, Soin soin, Pokeball pokeball) {
-        super(nom, vie, soin, pokeball);
-    }
 
     public Combat() {
         super();
@@ -43,46 +40,92 @@ public class Combat extends Pokemon implements Runnable {
 
         Soin etatDuPokemon = Soin.BonneSanté;
         Soin etatDuPokemonAdverse = Soin.BonneSanté;
-        while (etatDuPokemon != Soin.Mort || etatDuPokemonAdverse != Soin.Mort) {
+        while (etatDuPokemon != Soin.Mort && etatDuPokemonAdverse != Soin.Mort) {
             System.out.println("Quel attaque voulez-vous utiliser ?");
             if (choixPokemon.equals("Dracaufeu")) {
                 System.out.println("1. Lance flammes");
                 System.out.println("2. Aeropique");
+
+                Scanner sc2 = new Scanner(System.in);
+                String attaqueChoisi = sc2.nextLine().toLowerCase();
+                switch (attaqueChoisi) {
+                    case "lance flammes" -> vieAdversaire -= 30;
+                    case "aeropique" -> vieAdversaire -= 20;
+                    default -> System.out.println("L'attaque choisit n'existe pas");
+                }
             }
+
             else if (choixPokemon.equals("Mystherbe")) {
                 System.out.println("1. Vol vie");
                 System.out.println("2. Poudre toxic");
+
+                Scanner sc2 = new Scanner(System.in);
+                String attaqueChoisi = sc2.nextLine().toLowerCase();
+                switch (attaqueChoisi) {
+                    case "vol vie" -> vieAdversaire -= 10;
+                    case "poudre toxic" -> System.out.println("Good good");
+                    default -> System.out.println("L'attaque choisit n'existe pas");
+                }
             }
+
             else if (choixPokemon.equals("Bulbizarre")) {
                 System.out.println("1. Fouet lianes");
                 System.out.println("2. Synthèse");
-            } else if (choixPokemon.equals("Magicarpe")) {
+
+                Scanner sc2 = new Scanner(System.in);
+                String attaqueChoisi = sc2.nextLine().toLowerCase();
+                switch (attaqueChoisi) {
+                    case "fouet lianes" -> vieAdversaire -= 20 ;
+                    case "synthèse" -> vie += 20;
+                    default -> System.out.println("L'attaque choisit n'existe pas");
+                }
+            }
+
+            else if (choixPokemon.equals("Magicarpe")) {
                 System.out.println("1. Trempette");
                 System.out.println("2. Charge");
+
+                Scanner sc2 = new Scanner(System.in);
+                String attaqueChoisi = sc2.nextLine().toLowerCase();
+                switch (attaqueChoisi) {
+                    case "trempette" -> vieAdversaire += 0;
+                    case "charge" -> vieAdversaire += 20;
+                    default -> System.out.println("L'attaque choisit n'existe pas");
+                }
             }
+
             else if (choixPokemon.equals("Caninos")) {
             System.out.println("1. Flammèche");
             System.out.println("2. Feu follet");
+
+                Scanner sc2 = new Scanner(System.in);
+                String attaqueChoisi = sc2.nextLine().toLowerCase();
+                switch (attaqueChoisi) {
+                    case "flammèche" -> vieAdversaire -= 20;
+                    case "feu follet" -> vieAdversaire -= 5;
+                    default -> System.out.println("L'attaque choisit n'existe pas");
+                }
         }
 
-            Scanner sc2 = new Scanner(System.in);
-            String attaqueChoisi = sc2.nextLine().toLowerCase();
-            switch (attaqueChoisi) {
-                case "lance flammes" -> System.out.println("Good");
-                case "aeropique" -> System.out.println("Good good");
-                default -> System.out.println("Nope");
+            if (vieAdversaire <= 0){
+                vieAdversaire = 0;
+                etatDuPokemonAdverse = Soin.Mort;
             }
-//            if ((!attaqueChoisi.equals("Lance flammes")) || (!attaqueChoisi.equals("Aeropique"))) {
-//                System.out.println("L'attaque choisi existe pas");
-//            }
-//            else {
-//                System.out.println("ca existe");
-//            }
-            System.out.println(attaqueChoisi);
-        }
+            if (vie <= 0){
+                vie = 0;
+                etatDuPokemon = Soin.Mort;
+            }
 
-        
-        
+            if (etatDuPokemon == Soin.Mort) {
+                System.out.println("Tu es mort...");
+                break;
+            }
+            if (etatDuPokemonAdverse == Soin.Mort) {
+                System.out.println("Bien joué, le pokémon adverse est KO");
+                break;
+            }
+            System.out.println("Vie de l'adversaire : " + vieAdversaire);
+        }
 
         /* if (str1.equals("Dracaufeu") && type == "eau") {
             System.out.println("Vous avez perdu");
@@ -111,7 +154,5 @@ public class Combat extends Pokemon implements Runnable {
         else if (str1.equals("Carapuce") || str1.equals("Magicarpe") && type == "feu") {
             System.out.println("Vous avez gagné");
         }*/
-
-        System.out.println(type);
     }
 }
