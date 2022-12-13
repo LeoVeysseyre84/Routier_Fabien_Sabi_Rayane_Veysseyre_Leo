@@ -1,4 +1,7 @@
-public class Caninos extends Pokemon implements Feu{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Caninos extends Pokemon implements Feu, Vulnerabilite{
 
 
     public Caninos(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
@@ -14,8 +17,18 @@ public class Caninos extends Pokemon implements Feu{
     }
 
     @Override
-    public void faiblesse() {
+    public List<Element> faiblesse() {
         System.out.println("Caninos est est plus faible face au type Eau et plus fort face au type Plante");
+        return new ArrayList<>(){{
+            add(Element.EAU);
+        }};
+    }
+
+    @Override
+    public List<Element> resistance() {
+        return new ArrayList<>(){{
+            add(Element.PLANTE);
+        }};
     }
 
     @Override

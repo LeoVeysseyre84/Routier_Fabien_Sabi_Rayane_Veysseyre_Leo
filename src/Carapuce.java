@@ -1,4 +1,7 @@
-public class Carapuce extends Pokemon implements Eau{
+import java.util.ArrayList;
+import java.util.List;
+
+public class Carapuce extends Pokemon implements Eau, Vulnerabilite{
 
 
     public Carapuce(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
@@ -16,8 +19,18 @@ public class Carapuce extends Pokemon implements Eau{
         System.out.println("Carapuce est est plus faible face au type Plante et plus fort face au type Feu");
     }
 
-    @Override
-    public void faiblesse() {
 
+    @Override
+    public List<Element> faiblesse() {
+        return new ArrayList<>(){{
+            add(Element.PLANTE);
+        }};
+    }
+
+    @Override
+    public List<Element> resistance() {
+        return new ArrayList<>(){{
+            add(Element.FEU);
+        }};
     }
 }
