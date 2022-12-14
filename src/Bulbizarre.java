@@ -17,7 +17,7 @@ import java.util.List;
             vie -= 20;
             return Element.PLANTE;
         }
-        public Element synthese(int vieAdversaire){
+        public Element synthese(){
             System.out.println("Bulbizarre utilise Synthèse");
             vieAdversaire -= 20;
             return Element.PLANTE;
