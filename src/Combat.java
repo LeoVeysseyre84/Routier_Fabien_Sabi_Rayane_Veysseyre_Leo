@@ -11,13 +11,13 @@ public class Combat extends Pokemon implements Runnable {
 
     Element attaque;
 
-    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
-    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
-    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
-    Magicarpe magicarpe = new Magicarpe("Bulbizarre", "mâle", 129, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
-    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Magicarpe magicarpe = new Magicarpe("Bulbizarre", "mâle", 129, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
 
-    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
 
 
 //    Dracaufeu dracaufeu;
@@ -74,8 +74,14 @@ public class Combat extends Pokemon implements Runnable {
                 Scanner sc2 = new Scanner(System.in);
                 String attaqueChoisi = sc2.nextLine().toLowerCase();
                 switch (attaqueChoisi) {
-                    case "lance flammes" -> dracaufeu.LanceFlammes(vieAdversaire);
-                    case "aeropique" -> dracaufeu.Aeropique(vieAdversaire);
+                    case "lance flammes" -> {
+                        dracaufeu.lanceFlammes();
+                        vieAdversaire = dracaufeu.vieAdversaire;
+                    }
+                    case "aeropique" -> {
+                        dracaufeu.aeropique();
+                        vieAdversaire = dracaufeu.vieAdversaire;
+                    }
                     default -> System.out.println("L'attaque choisit n'existe pas");
                 }
             }
@@ -88,10 +94,10 @@ public class Combat extends Pokemon implements Runnable {
                 String attaqueChoisi = sc2.nextLine().toLowerCase();
                 switch (attaqueChoisi) {
                     case "vol vie" -> {
-                        mystherbe.volVie(vieAdversaire);
+                        mystherbe.volVie();
                     }
                     case "poudre toxic" -> {
-                        mystherbe.poudreToxic(vieAdversaire);
+                        mystherbe.poudreToxic();
                     }
 
                     default ->
@@ -100,12 +106,12 @@ public class Combat extends Pokemon implements Runnable {
                 if (nomAdversaire.equals("Dracaufeu")) {
                     int r2 = (int) (Math.random() * 2);
                     if (r2 == 0) {
-                        System.out.println("Dracaufeu utilise Lance Flammes");
-                        vie -= 30;
+                        dracaufeu.lanceFlammesAdverse();
+                        vie = dracaufeu.vie;
                     }
                     else {
-                        System.out.println("Dracaufeu utilise aéropique");
-                        vie -= 20;
+                        dracaufeu.aeropique();
+                        vie = dracaufeu.vie;
                     }
                 }
                 else if (r == 1) {

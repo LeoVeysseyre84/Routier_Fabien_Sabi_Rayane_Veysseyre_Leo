@@ -3,17 +3,19 @@ public abstract class Pokemon {
     String sexe;
     int numeroPokedex;
     int vie = 100;
+    int vieAdversaire = 100;
     Soin soin;
     Pokeball pokeball;
     Attaque attaque;
 
 
 
-    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
+    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
         this.nom = nom;
         this.sexe = sexe;
         this.numeroPokedex = numeroPokedex;
         this.vie = vie;
+        this.vieAdversaire = vieAdversaire;
         this.soin = soin;
         this.pokeball = pokeball;
         this.attaque = attaque;

@@ -4,18 +4,28 @@ import java.util.List;
     public class Caninos extends Pokemon implements Vulnerabilite {
 
 
-        public Caninos(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
-            super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+        public Caninos(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
+            super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
         }
 
-        public Element Flammèche(int vieAdversaire){
+        public Element flammeche(){
             System.out.println("Caninos utilise Flammèche");
             vieAdversaire -= 20;
             return Element.FEU;
         }
-        public Element FeuFollet(int vieAdversaire){
+        public Element flammecheAdverse(){
+            System.out.println("Le Caninos adverse utilise Flammèche");
+            vie -= 20;
+            return Element.FEU;
+        }
+        public Element feuFollet(){
             System.out.println("Caninos utilise Feu Follet");
             vieAdversaire -= 20;
+            return Element.FEU;
+        }
+        public Element feuFolletAdverse(){
+            System.out.println("Le Caninos adverse utilise Feu Follet");
+            vie -= 20;
             return Element.FEU;
         }
 

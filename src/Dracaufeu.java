@@ -4,18 +4,28 @@ import java.util.List;
 public class Dracaufeu extends Pokemon implements Vulnerabilite {
 
 
-    public Dracaufeu(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
-        super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+    public Dracaufeu(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
     }
 
-    public Element LanceFlammes(int vieAdversaire){
+    public Element lanceFlammes(){
         System.out.println("Dracaufeu utilise Lance flammes");
         vieAdversaire -= 30;
         return Element.FEU;
     }
-    public Element Aeropique(int vieAdversaire){
-        System.out.println("Dracaufeu utilise Aéropique");
+    public Element lanceFlammesAdverse(){
+        System.out.println("Dracaufeu utilise Lance flammes");
+        vie -= 30;
+        return Element.FEU;
+    }
+    public Element aeropique(){
+        System.out.println("Le Dracaufeu adverse utilise Aéropique");
         vieAdversaire -= 20;
+        return Element.FEU;
+    }
+    public Element aeropiqueAdverse(){
+        System.out.println("Le Dracaufeu adverse utilise Aéropique");
+        vie -= 20;
         return Element.FEU;
     }
 

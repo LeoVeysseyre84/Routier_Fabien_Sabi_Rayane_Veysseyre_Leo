@@ -3,21 +3,31 @@ import java.util.List;
 
 public class Mystherbe extends Pokemon implements Vulnerabilite{
 
-    public Mystherbe(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
-        super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+    public Mystherbe(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
     }
 
-    public Element volVie(int vieAdversaire){
+    public Element volVie(){
         System.out.println("Mystherbe utilise Vole vie");
         vieAdversaire -= 10;
-        vie += 10;
+        return Element.PLANTE;
+    }
+    public Element volVieAdverse(){
+        System.out.println("Le Mystherbe adverse utilise Vole vie");
+        vie -= 10;
         return Element.PLANTE;
     }
 
-    public Element poudreToxic(int vieAdversaire){
+    public Element poudreToxic(){
         System.out.println("Mystherbe utilise Poudre Toxic");
+        vieAdversaire -=25;
         return Element.PLANTE;
 
+    }
+    public Element poudreToxicAdverse(){
+        System.out.println("Le Mystherbe adverse utilise Poudre Toxic");
+        vie -= 25;
+        return Element.PLANTE;
     }
 
     @Override

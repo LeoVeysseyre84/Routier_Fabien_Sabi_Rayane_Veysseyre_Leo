@@ -4,19 +4,28 @@ import java.util.List;
     public class Carapuce extends Pokemon implements  Vulnerabilite {
 
 
-        public Carapuce(String nom, String sexe, int numeroPokedex, int vie, Soin soin, Pokeball pokeball, Attaque attaque) {
-            super(nom, sexe, numeroPokedex, vie, soin, pokeball, attaque);
+        public Carapuce(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
+            super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
         }
 
-        public Element PistoletAO(int vieAdversaire) {
+        public Element pistoletAO() {
             System.out.println("Carapuce utilise Pistolet à O");
             vieAdversaire -= 20;
             return Element.EAU;
         }
-
-        public Element LaserGlace(int vieAdversaire) {
+        public Element pistoletAOAdverse() {
+            System.out.println("Le Carapuce adverse utilise Pistolet à O");
+            vie -= 20;
+            return Element.EAU;
+        }
+        public Element laserGlace() {
             System.out.println("Carapuce utilise Laser Glace");
             vieAdversaire -= 20;
+            return Element.EAU;
+        }
+        public Element laserGlaceAdverse() {
+            System.out.println("Le Carapuce adverse utilise Laser Glace");
+            vie -= 20;
             return Element.EAU;
         }
 
