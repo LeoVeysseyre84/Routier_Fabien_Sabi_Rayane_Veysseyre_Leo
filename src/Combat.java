@@ -3,8 +3,24 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Combat extends Pokemon implements Runnable {
-    String type;
+    Element type;
     int vieAdversaire = 100;
+    Pokemon pokemon;
+
+    String nomAdversaire;
+
+    Element attaque;
+
+    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Magicarpe magicarpe = new Magicarpe("Bulbizarre", "mâle", 129, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+
+    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas);
+
+
+//    Dracaufeu dracaufeu;
 
     public Combat() {
         super();
@@ -12,28 +28,37 @@ public class Combat extends Pokemon implements Runnable {
 
 
     public void run() {
-        int r = (int) (Math.random() * 4);
+        int r = (int) (Math.random() * 5);
             if (r == 0) {
                 System.out.println("Votre adversaire est Dracaufeu");
-                type = "feu";
+                nomAdversaire = dracaufeu.getNom();
+                type = Element.FEU;
             }
             else if (r == 1) {
                 System.out.println("Votre adversaire est Bulbizarre");
-                type = "plante";
+                nomAdversaire = bulbizarre.getNom();
+                type = Element.PLANTE;
         }
             else if (r == 2) {
                 System.out.println("Votre adversaire est Carapuce");
-                type = "eau";
+                nomAdversaire = carapuce.getNom();
+                type = Element.EAU;
             }
             else if (r == 3) {
                 System.out.println("Votre adversaire est Magicarpe");
-                type = "eau";
+                nomAdversaire = magicarpe.getNom();
+                type = Element.EAU;
             }
             else if (r == 4) {
                 System.out.println("Votre adversaire est Mystherbe");
-                type = "plante";
+                nomAdversaire = mystherbe.getNom();
+                type = Element.PLANTE;
             }
-
+            else if (r == 5) {
+                System.out.println("Votre adversaire est Caninos");
+                nomAdversaire = caninos.getNom();
+                type = Element.FEU;
+            }
         System.out.println("Veuillez choisir un Pokemon :");
         Scanner sc1 = new Scanner(System.in);
         String choixPokemon = sc1.nextLine();
@@ -49,8 +74,14 @@ public class Combat extends Pokemon implements Runnable {
                 Scanner sc2 = new Scanner(System.in);
                 String attaqueChoisi = sc2.nextLine().toLowerCase();
                 switch (attaqueChoisi) {
-                    case "lance flammes" -> vieAdversaire -= 30;
-                    case "aeropique" -> vieAdversaire -= 20;
+                    case "lance flammes" -> {
+                        dracaufeu.lanceFlammes();
+                        vieAdversaire = dracaufeu.vieAdversaire;
+                    }
+                    case "aeropique" -> {
+                        dracaufeu.aeropique();
+                        vieAdversaire = dracaufeu.vieAdversaire;
+                    }
                     default -> System.out.println("L'attaque choisit n'existe pas");
                 }
             }
@@ -62,9 +93,38 @@ public class Combat extends Pokemon implements Runnable {
                 Scanner sc2 = new Scanner(System.in);
                 String attaqueChoisi = sc2.nextLine().toLowerCase();
                 switch (attaqueChoisi) {
-                    case "vol vie" -> vieAdversaire -= 10;
-                    case "poudre toxic" -> System.out.println("Good good");
-                    default -> System.out.println("L'attaque choisit n'existe pas");
+                    case "vol vie" -> {
+                        mystherbe.volVie();
+                    }
+                    case "poudre toxic" -> {
+                        mystherbe.poudreToxic();
+                    }
+
+                    default ->
+                        System.out.println("L'attaque choisit n'existe pas");
+                }
+                if (nomAdversaire.equals("Dracaufeu")) {
+                    int r2 = (int) (Math.random() * 2);
+                    if (r2 == 0) {
+                        dracaufeu.lanceFlammesAdverse();
+                        vie = dracaufeu.vie;
+                    }
+                    else {
+                        dracaufeu.aeropique();
+                        vie = dracaufeu.vie;
+                    }
+                }
+                else if (r == 1) {
+                    System.out.println("Votre adversaire est Bulbizarre");
+                }
+                else if (r == 2) {
+                    System.out.println("Votre adversaire est Carapuce");
+                }
+                else if (r == 3) {
+                    System.out.println("Votre adversaire est Magicarpe");
+                }
+                else if (r == 4) {
+                    System.out.println("Votre adversaire est Mystherbe");
                 }
             }
 
@@ -92,6 +152,7 @@ public class Combat extends Pokemon implements Runnable {
                     case "charge" -> vieAdversaire += 20;
                     default -> System.out.println("L'attaque choisit n'existe pas");
                 }
+
             }
 
             else if (choixPokemon.equals("Caninos")) {
@@ -124,35 +185,10 @@ public class Combat extends Pokemon implements Runnable {
                 System.out.println("Bien joué, le pokémon adverse est KO");
                 break;
             }
-            System.out.println("Vie de l'adversaire : " + vieAdversaire);
+            System.out.println("--------------------");
+            System.out.println("Vie de votre Pokemon : " + vie);
+            System.out.println("Vie du Pokemon adverse : " + vieAdversaire);
+            System.out.println("--------------------");
         }
-
-        /* if (str1.equals("Dracaufeu") && type == "eau") {
-            System.out.println("Vous avez perdu");
-        }
-        else if (str1.equals("Dracaufeu") && type == "plante") {
-            System.out.println("Vous avez gagné");
-        }
-        else if (str1.equals("Dracaufeu") && type == "feu") {
-            System.out.println("Egalité");
-        }
-        else if (str1.equals("Mystherbe") || str1.equals("Bulbizarre") && type == "feu") {
-            System.out.println("Vous avez perdu");
-        }
-        else if (str1.equals("Mystherbe") || str1.equals("Bulbizarre") && type == "eau") {
-            System.out.println("Vous avez gagné");
-        }
-        else if (str1.equals("Mystherbe") || str1.equals("Bulbizarre") && type == "plante") {
-            System.out.println("Egalité");
-        }
-        else if (str1.equals("Carapuce") || str1.equals("Magicarpe") && type == "plante") {
-            System.out.println("Vous avez perdu");
-        }
-        else if (str1.equals("Carapuce") || str1.equals("Magicarpe") && type == "eau") {
-            System.out.println("Egalité");
-        }
-        else if (str1.equals("Carapuce") || str1.equals("Magicarpe") && type == "feu") {
-            System.out.println("Vous avez gagné");
-        }*/
     }
 }
