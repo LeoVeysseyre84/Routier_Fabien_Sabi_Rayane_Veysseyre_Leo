@@ -77,4 +77,60 @@ public abstract class Pokemon {
         }
         attaque = Attaque.AttaquePas;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getSexe() {
+        return sexe;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
+
+    public int getNumeroPokedex() {
+        return numeroPokedex;
+    }
+
+    public void setNumeroPokedex(int numeroPokedex) {
+        this.numeroPokedex = numeroPokedex;
+    }
+
+    public int getVie() {
+        return vie;
+    }
+
+    public void setVie(int vie) {
+        this.vie = vie;
+    }
+
+    public Soin getSoin() {
+        return soin;
+    }
+
+    public void setSoin(Soin soin) {
+        this.soin = soin;
+    }
+
+    public Pokeball getPokeball() {
+        return pokeball;
+    }
+
+    public void setPokeball(Pokeball pokeball) {
+        this.pokeball = pokeball;
+    }
+
+    public Attaque getAttaque() {
+        return attaque;
+    }
+
+    public void setAttaque(Attaque attaque) {
+        this.attaque = attaque;
+    }
 }
