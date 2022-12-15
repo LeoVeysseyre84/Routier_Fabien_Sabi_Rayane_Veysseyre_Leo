@@ -1,28 +1,55 @@
 import java.sql.SQLOutput;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+/**
+ * Classe permettant de simuler un combat entre un pokemon et un pokemon adverse.
+ */
+/**
+ * Classe qui gère les combats entre deux pokemons.
+ *
+ * @extends Pokemon
+ * @implements Runnable
+ */
 public class Combat extends Pokemon implements Runnable {
-    Pokemon pokemon;
-    Pokemon pokemonAdverse;
-    int choixPokemonAdverse = (int) (Math.random() * 9);
 
-    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Element.FEU);
-    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Element.PLANTE);
-    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Element.EAU);
-    Magicarpe magicarpe = new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Element.EAU);
-    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Element.PLANTE);
-    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Element.FEU);
-    Roucool roucool = new Roucool("Roucool","mâle",16, 100, 100, Soin.BonneSanté, Element.VOL);
-    Pikachu pikachu = new Pikachu("Pikachu","mâle",25, 100, 100, Soin.BonneSanté, Element.ELECTRIK);
-    Racaillou racaillou = new Racaillou("Racaillou","mâle",74, 100, 100, Soin.BonneSanté, Element.SOL);
-    Mewtwo mewtwo = new Mewtwo("Mewtwo", "neutre", 150, 100, 100, Soin.BonneSanté, Element.PSY);
+    // Attributs de la classe
+    private Pokemon pokemon;
+    private Pokemon pokemonAdverse;
+    private int choixPokemonAdverse = (int) (Math.random() * 9);
+
+    // Instanciations des différents pokemons
+    private Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Element.FEU);
+    private Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Element.PLANTE);
+    private Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Element.EAU);
+    private Magicarpe magicarpe = new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Element.EAU);
+    private Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Element.PLANTE);
+    private Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Element.FEU);
+    private Roucool roucool = new Roucool("Roucool","mâle",16, 100, 100, Soin.BonneSanté, Element.VOL);
+    private Pikachu pikachu = new Pikachu("Pikachu","mâle",25, 100, 100, Soin.BonneSanté, Element.ELECTRIK);
+    private Racaillou racaillou = new Racaillou("Racaillou","mâle",74, 100, 100, Soin.BonneSanté, Element.SOL);
+    private Mewtwo mewtwo = new Mewtwo("Mewtwo", "neutre", 150, 100, 100, Soin.BonneSanté, Element.PSY);
+
+    // Méthodes de la classe
+    /**
+     * Constructeur par défaut de la classe.
+     */
     public Combat() {
         super();
     }
 
-    public void attaquesAdverses(){
+    /**
+     * Génère aléatoirement une attaque effectuée par un Pokémon adverse.
+     * Cette attaque est ensuite lancée contre le Pokémon actuel.
+     */
+    public void attaquesAdverses() {
+        // Génère aléatoirement le choix du Pokémon adverse
+        int choixPokemonAdverse = (int) (Math.random() * 9);
+
+        // En fonction du Pokémon adverse choisi, génère aléatoirement une attaque
+        // et lance cette attaque contre le Pokémon actuel
         if (choixPokemonAdverse == 0) {
             int choixAttaqueAdverse = (int) (Math.random() * 2);
             if (choixAttaqueAdverse == 0) {
@@ -34,6 +61,9 @@ public class Combat extends Pokemon implements Runnable {
                 pokemon.subirDegats(degats);
             }
         }
+        // ...
+
+        // Pour les autres choix de Pokémon adverse, effectue la même logique
         if (choixPokemonAdverse == 1) {
             int choixAttaqueAdverse = (int) (Math.random() * 2);
             if (choixAttaqueAdverse == 0) {
@@ -134,7 +164,21 @@ public class Combat extends Pokemon implements Runnable {
             }
         }
     }
-
+    /**
+     * Simule un combat entre deux Pokémon.
+     *
+     * Le Pokémon adverse est choisi en fonction de la valeur de la variable choixPokemonAdverse,
+     * qui doit être un entier compris entre 0 et 9. Le Pokémon du joueur est choisi en fonction
+     * de l'entrée du joueur.
+     *
+     * Lors du combat, le joueur peut choisir une attaque pour son Pokémon en utilisant l'entrée
+     * du clavier. Les dommages infligés par chaque attaque sont calculés en utilisant les méthodes
+     * de la classe Degats, et sont ensuite soustraits de la vie du Pokémon adverse en utilisant
+     * la méthode subirDegats de la classe Pokemon.
+     *
+     * Le combat se poursuit jusqu'à ce que l'un des deux Pokémon soit déclaré "Mort" en utilisant
+     * l'énumération Soin.
+     */
     public void run() {
         if (choixPokemonAdverse == 0) {
             pokemonAdverse = dracaufeu;
@@ -412,14 +456,25 @@ public class Combat extends Pokemon implements Runnable {
             System.out.println("--------------------");
         }
     }
-
+    /**
+     * Cette méthode retourne la liste des éléments auxquels le Pokémon est faible.
+     *
+     * @return La liste des éléments auxquels le Pokémon est faible
+     */
     @Override
     public List<Element> faiblesse() {
-        return null;
+        return new ArrayList<>(){{
+        }};
     }
 
+    /**
+     * Cette méthode retourne la liste des éléments auxquels le Pokémon est résistant.
+     *
+     * @return La liste des éléments auxquels le Pokémon est résistant
+     */
     @Override
     public List<Element> resistance() {
-        return null;
+        return new ArrayList<>(){{
+        }};
     }
 }
