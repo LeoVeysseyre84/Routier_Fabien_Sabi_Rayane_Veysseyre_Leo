@@ -7,20 +7,20 @@ public class Mystherbe extends Pokemon implements Vulnerabilite{
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Degats volVie(Element typeAdverse){
+    public Degats volVie(){
         System.out.println("Mystherbe utilise Vole vie");
         return new Degats (20, Element.PLANTE);
     }
-    public Degats volVieAdverse(Element typeAdverse){
+    public Degats volVieAdverse(){
         System.out.println("Le Mystherbe adverse utilise Vole vie");
         return new Degats (20, Element.PLANTE);
     }
 
-    public Degats chocVenin(Element typeAdverse){
+    public Degats chocVenin(){
         System.out.println("Mystherbe utilise Choc venin");
         return new Degats (30, Element.POISON);
     }
-    public Degats chocVeninAdverse(Element typeAdverse){
+    public Degats chocVeninAdverse(){
         System.out.println("Le Mystherbe adverse utilise Choc venin");
         return new Degats (30, Element.POISON);
     }

@@ -8,41 +8,21 @@ public class Caninos extends Pokemon implements Vulnerabilite {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Element flammeche(Element typeAdverse){
+    public Degats flammeche(){
         System.out.println("Caninos utilise Flammèche");
-        if (resistance().contains(typeAdverse) && typeAdverse == Element.PLANTE) {
-            vieAdversaire -= 40;
-        }
-        else if (faiblesse().contains(typeAdverse) && typeAdverse == Element.FEU || typeAdverse == Element.EAU) {
-            vieAdversaire -= 10;
-        }
-        else {
-            vieAdversaire -= 20;
-        }
-        return Element.FEU;
+        return new Degats (20, Element.FEU);
     }
-    public Element flammecheAdverse(Element type){
+    public Degats flammecheAdverse(){
         System.out.println("Le Caninos adverse utilise Flammèche");
-        if (resistance().contains(type) && type == Element.PLANTE) {
-            vie -= 40;
-        }
-        else if (faiblesse().contains(type) && type == Element.FEU || type == Element.EAU) {
-            vie -= 10;
-        }
-        else {
-            vie -= 20;
-        }
-        return Element.FEU;
+        return new Degats (20, Element.FEU);
     }
-    public Element morsure(){
+    public Degats morsure(){
         System.out.println("Caninos utilise Morsure");
-        vieAdversaire -= 20;
-        return Element.TENEBRES;
+        return new Degats (20, Element.TENEBRES);
     }
-    public Element morsureAdverse(){
+    public Degats morsureAdverse(){
         System.out.println("Le Caninos adverse utilise Morsure");
-        vie -= 20;
-        return Element.TENEBRES;
+        return new Degats (20, Element.TENEBRES);
     }
 
     @Override

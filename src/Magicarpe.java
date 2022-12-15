@@ -8,26 +8,23 @@ public class Magicarpe extends Pokemon implements Vulnerabilite {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Element trempette() {
+    public Degats trempette() {
         System.out.println("Magicarpe utilise Trempette");
-        vieAdversaire -= 0;
-        return Element.EAU;
+        return new Degats (0, Element.EAU);
     }
-    public Element trempetteAdverse() {
+    public Degats trempetteAdverse() {
         System.out.println("Le Magicarpe adbverse utilise Trempette");
-        vie -= 0;
-        return Element.EAU;
+        return new Degats (0, Element.EAU);
     }
 
-    public Element charge() {
+    public Degats charge() {
         System.out.println("Magicarpe utilise Charge");
-        vieAdversaire -= 20;
-        return Element.NORMAL;
+        return new Degats (20, Element.NORMAL);
     }
-    public Element chargeAdverse() {
+    public Degats chargeAdverse() {
         System.out.println("Le Magicarpe adverse utilise Charge");
-        vie -= 20;
-        return Element.NORMAL;
+        return new Degats (20, Element.NORMAL);
+
     }
 
 

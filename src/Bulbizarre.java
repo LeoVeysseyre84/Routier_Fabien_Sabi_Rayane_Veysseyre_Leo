@@ -7,43 +7,23 @@ public class Bulbizarre extends Pokemon implements Vulnerabilite{
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Element fouetLianes(Element typeAdverse){
+    public Degats fouetLianes(){
         System.out.println("Bulbizarre utilise Fouet Lianes");
-        if (resistance().contains(typeAdverse == Element.EAU)) {
-            vieAdversaire -= 40;
-        }
-        else if (faiblesse().contains(typeAdverse == Element.FEU)) {
-            vieAdversaire -= 10;
-        }
-        else {
-            vieAdversaire -= 20;
-        }
-        return Element.PLANTE;
+        return new Degats (20, Element.PLANTE);
     }
 
 
-    public Element fouetLianesAdverse(Element type){
+    public Degats fouetLianesAdverse(){
         System.out.println("Le Bulbizarre adverse utilise Fouet Lianes");
-        if (resistance().contains(type == Element.EAU)) {
-            vie -= 40;
-        }
-        else if (faiblesse().contains(type == Element.FEU)) {
-            vie -= 10;
-        }
-        else {
-            vie -= 20;
-        }
-        return Element.PLANTE;
+        return new Degats (20, Element.PLANTE);
     }
-    public Element synthese(){
+    public Degats synthese(){
         System.out.println("Bulbizarre utilise Synthèse");
-        vie += 25;
-        return Element.PLANTE;
+        return new Degats (0, Element.PLANTE);
     }
-    public Element syntheseAdverse(){
-        System.out.println("Le Bulbizarre adverse utilise Synthèse");
-        vieAdversaire += 25;
-        return Element.PLANTE;
+    public Degats syntheseAdverse(){
+        System.out.println("Bulbizarre adverse utilise Synthèse");
+        return new Degats (0, Element.PLANTE);
     }
 
     @Override

@@ -8,57 +8,21 @@ public class Carapuce extends Pokemon implements  Vulnerabilite {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Element pistoletAO(Element typeAdverse) {
+    public Degats pistoletAO() {
         System.out.println("Carapuce utilise Pistolet à O");
-        if (resistance().contains(typeAdverse)) {
-            vieAdversaire -= 40;
-        }
-        else if (faiblesse().contains(typeAdverse)) {
-            vieAdversaire -= 10;
-        }
-        else {
-            vieAdversaire -= 20;
-        }
-        return Element.EAU;
+        return new Degats (20, Element.EAU);
     }
-    public Element pistoletAOAdverse(Element type) {
+    public Degats pistoletAOAdverse() {
         System.out.println("Le Carapuce adverse utilise Pistolet à O");
-        if (resistance().contains(type)) {
-            vie -= 40;
-        }
-        else if (faiblesse().contains(type)) {
-            vie -= 10;
-        }
-        else {
-            vie -= 20;
-        }
-        return Element.EAU;
+        return new Degats (20, Element.EAU);
     }
-    public Element laserGlace(Element typeAdverse) {
+    public Degats laserGlace() {
         System.out.println("Carapuce utilise Laser Glace");
-        if (resistance().contains(typeAdverse) && typeAdverse == Element.PLANTE || typeAdverse == Element.VOL) {
-            vieAdversaire -= 40;
-        }
-        else if (faiblesse().contains(typeAdverse) && typeAdverse == Element.EAU || typeAdverse == Element.GLACE) {
-            vieAdversaire -= 10;
-        }
-        else {
-            vieAdversaire -= 20;
-        }
-        return Element.GLACE;
+        return new Degats (20, Element.GLACE);
     }
-    public Element laserGlaceAdverse(Element type) {
+    public Degats laserGlaceAdverse() {
         System.out.println("Le Carapuce adverse utilise Laser Glace");
-        if (resistance().contains(type) && type == Element.FEU) {
-            vie -= 40;
-        }
-        else if (faiblesse().contains(type) && type == Element.PLANTE || type == Element.EAU) {
-            vie -= 10;
-        }
-        else {
-            vie -= 20;
-        }
-        return Element.EAU;
+        return new Degats (20, Element.GLACE);
     }
 
 

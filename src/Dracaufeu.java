@@ -8,19 +8,19 @@ public class Dracaufeu extends Pokemon implements Vulnerabilite {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Degats lanceFlammes(Element typeAdverse){
+    public Degats lanceFlammes(){
         System.out.println("Dracaufeu utilise Lance flammes");
         return new Degats(30, Element.FEU);
     }
-    public Degats lanceFlammesAdverse(Element type){
+    public Degats lanceFlammesAdverse(){
         System.out.println("Dracaufeu utilise Lance flammes");
         return new Degats (30, Element.FEU);
     }
-    public Degats aeropique(Element typeAdverse){
+    public Degats aeropique(){
         System.out.println("Le Dracaufeu adverse utilise Aéropique");
         return new Degats (20, Element.VOL);
     }
-    public Degats aeropiqueAdverse(Element type){
+    public Degats aeropiqueAdverse(){
         System.out.println("Le Dracaufeu adverse utilise Aéropique");
         return new Degats (20, Element.VOL);
     }
