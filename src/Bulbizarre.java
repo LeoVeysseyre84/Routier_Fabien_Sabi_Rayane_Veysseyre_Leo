@@ -59,7 +59,7 @@ public class Bulbizarre extends Pokemon implements Vulnerabilite {
     /**
      * Cette méthode retourne la liste des éléments auxquels Bulbizarre est résistant.
      *
-     * @return La liste des éléments auxquels Bulbizarre est résistant (EAU et PLANTE)
+     * @return La liste des éléments auxquels Bulbizarre est résistant (EAU et PLANTE).
      */
     @Override
     public List<Element> resistance() {
