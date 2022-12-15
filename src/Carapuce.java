@@ -1,46 +1,50 @@
 import java.util.ArrayList;
 import java.util.List;
 
-    public class Carapuce extends Pokemon implements  Vulnerabilite {
+public class Carapuce extends Pokemon implements  Vulnerabilite {
 
 
-        public Carapuce(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
-            super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
-        }
-
-        public Element pistoletAO() {
-            System.out.println("Carapuce utilise Pistolet à O");
-            vieAdversaire -= 20;
-            return Element.EAU;
-        }
-        public Element pistoletAOAdverse() {
-            System.out.println("Le Carapuce adverse utilise Pistolet à O");
-            vie -= 20;
-            return Element.EAU;
-        }
-        public Element laserGlace() {
-            System.out.println("Carapuce utilise Laser Glace");
-            vieAdversaire -= 20;
-            return Element.EAU;
-        }
-        public Element laserGlaceAdverse() {
-            System.out.println("Le Carapuce adverse utilise Laser Glace");
-            vie -= 20;
-            return Element.EAU;
-        }
-
-
-        @Override
-        public List<Element> faiblesse() {
-            return new ArrayList<>() {{
-                add(Element.PLANTE);
-            }};
-        }
-
-        @Override
-        public List<Element> resistance() {
-            return new ArrayList<>() {{
-                add(Element.FEU);
-            }};
-        }
+    public Carapuce(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, type);
     }
+
+    public Degats pistoletAO() {
+        System.out.println("Carapuce utilise Pistolet Ã  O");
+        return new Degats (20, Element.EAU);
+    }
+    public Degats laserGlace() {
+        System.out.println("Carapuce utilise Laser Glace");
+        return new Degats (20, Element.GLACE);
+    }
+
+
+    @Override
+    public List<Element> faiblesse() {
+        return new ArrayList<>() {{
+            add(Element.PLANTE);
+            add(Element.ELECTRIK);
+        }};
+    }
+
+    @Override
+    public List<Element> resistance() {
+        return new ArrayList<>() {{
+            add(Element.FEU);
+            add(Element.EAU);
+            add(Element.GLACE);
+        }};
+    }
+
+    @Override
+    public String toString() {
+        return "Carapuce{" +
+                "nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", numeroPokedex=" + numeroPokedex +
+                ", vie=" + vie +
+                ", vieAdversaire=" + vieAdversaire +
+                ", soin=" + soin +
+                ", type=" + type +
+                '}';
+    }
+}

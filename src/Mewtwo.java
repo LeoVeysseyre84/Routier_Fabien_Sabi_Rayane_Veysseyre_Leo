@@ -1,43 +1,39 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bulbizarre extends Pokemon implements Vulnerabilite{
+public class Mewtwo extends Pokemon implements Vulnerabilite{
 
-    public Bulbizarre(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
+    public Mewtwo(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, type);
     }
 
-    public Degats fouetLianes(){
-        System.out.println("Bulbizarre utilise Fouet Lianes");
-        return new Degats (20, Element.PLANTE);
+    public Degats psyko(){
+        System.out.println("Mewtwo utilise Psyko");
+        return new Degats (40, Element.PSY);
     }
 
-    public Degats synthese(){
-        System.out.println("Bulbizarre utilise SynthÃ¨se");
-        return new Degats (0, Element.PLANTE);
+    public Degats meteores(){
+        System.out.println("Mewtwo utilise Météores");
+        return new Degats (30, Element.NORMAL);
     }
 
     @Override
     public List<Element> faiblesse() {
         return new ArrayList<>(){{
-            add(Element.FEU);
-            add(Element.VOL);
-            add(Element.GLACE);
-            add(Element.VOL);
+            add(Element.TENEBRES);
         }};
     }
 
     @Override
     public List<Element> resistance() {
         return new ArrayList<>(){{
-            add(Element.EAU);
-            add(Element.PLANTE);
+            add(Element.PSY);
         }};
     }
 
     @Override
     public String toString() {
-        return "Bulbizarre{" +
+        return "Mewtwo{" +
                 "nom='" + nom + '\'' +
                 ", sexe='" + sexe + '\'' +
                 ", numeroPokedex=" + numeroPokedex +

@@ -4,30 +4,18 @@ import java.util.List;
 public class Magicarpe extends Pokemon implements Vulnerabilite {
 
 
-    public Magicarpe(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
-        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
+    public Magicarpe(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, type);
     }
 
-    public Element trempette() {
+    public Degats trempette() {
         System.out.println("Magicarpe utilise Trempette");
-        vieAdversaire -= 0;
-        return Element.EAU;
-    }
-    public Element trempetteAdverse() {
-        System.out.println("Le Magicarpe adbverse utilise Trempette");
-        vie -= 0;
-        return Element.EAU;
+        return new Degats (0, Element.EAU);
     }
 
-    public Element charge() {
+    public Degats charge() {
         System.out.println("Magicarpe utilise Charge");
-        vieAdversaire -= 20;
-        return Element.EAU;
-    }
-    public Element chargeAdverse() {
-        System.out.println("Le Magicarpe adverse utilise Charge");
-        vie -= 20;
-        return Element.EAU;
+        return new Degats (20, Element.NORMAL);
     }
 
 
@@ -35,6 +23,7 @@ public class Magicarpe extends Pokemon implements Vulnerabilite {
     public List<Element> faiblesse() {
         return new ArrayList<>() {{
             add(Element.PLANTE);
+            add(Element.ELECTRIK);
         }};
     }
 
@@ -42,6 +31,21 @@ public class Magicarpe extends Pokemon implements Vulnerabilite {
     public List<Element> resistance() {
         return new ArrayList<>() {{
             add(Element.FEU);
+            add(Element.EAU);
+            add(Element.GLACE);
         }};
+    }
+
+    @Override
+    public String toString() {
+        return "Magicarpe{" +
+                "nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", numeroPokedex=" + numeroPokedex +
+                ", vie=" + vie +
+                ", vieAdversaire=" + vieAdversaire +
+                ", soin=" + soin +
+                ", type=" + type +
+                '}';
     }
 }
