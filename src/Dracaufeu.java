@@ -4,34 +4,29 @@ import java.util.List;
 public class Dracaufeu extends Pokemon implements Vulnerabilite {
 
 
-    public Dracaufeu(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
-        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
+    public Dracaufeu(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque, Element type) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
-    public Element lanceFlammes(){
+    public Degats lanceFlammes(Element typeAdverse){
         System.out.println("Dracaufeu utilise Lance flammes");
-        vieAdversaire -= 30;
-        return Element.FEU;
+        return new Degats(30, Element.FEU);
     }
-    public Element lanceFlammesAdverse(){
+    public Degats lanceFlammesAdverse(Element type){
         System.out.println("Dracaufeu utilise Lance flammes");
-        vie -= 30;
-        return Element.FEU;
+        return new Degats (30, Element.FEU);
     }
-    public Element aeropique(){
+    public Degats aeropique(Element typeAdverse){
         System.out.println("Le Dracaufeu adverse utilise Aéropique");
-        vieAdversaire -= 20;
-        return Element.FEU;
+        return new Degats (20, Element.VOL);
     }
-    public Element aeropiqueAdverse(){
+    public Degats aeropiqueAdverse(Element type){
         System.out.println("Le Dracaufeu adverse utilise Aéropique");
-        vie -= 20;
-        return Element.FEU;
+        return new Degats (20, Element.VOL);
     }
 
     @Override
     public List<Element> faiblesse() {
-        System.out.println("Dracaufeu est est plus faible face au type Eau et plus fort face au type Plante");
         return new ArrayList<>() {{
             add(Element.EAU);
         }};
@@ -41,6 +36,7 @@ public class Dracaufeu extends Pokemon implements Vulnerabilite {
     public List<Element> resistance() {
         return new ArrayList<>() {{
             add(Element.PLANTE);
+            add(Element.FEU);
         }};
     }
 }

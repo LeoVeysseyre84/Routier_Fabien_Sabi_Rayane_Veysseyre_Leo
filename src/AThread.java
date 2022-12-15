@@ -9,7 +9,5 @@ public class AThread implements Runnable {
         Thread t1 = new Thread(new Combat());
 
         t1.start();
-
-
     }
 }

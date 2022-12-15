@@ -1,4 +1,4 @@
-public abstract class Pokemon {
+public abstract class Pokemon implements Vulnerabilite {
     String nom;
     String sexe;
     int numeroPokedex;
@@ -7,10 +7,11 @@ public abstract class Pokemon {
     Soin soin;
     Pokeball pokeball;
     Attaque attaque;
+    Element type;
 
 
 
-    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
+    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque, Element type) {
         this.nom = nom;
         this.sexe = sexe;
         this.numeroPokedex = numeroPokedex;
@@ -19,6 +20,7 @@ public abstract class Pokemon {
         this.soin = soin;
         this.pokeball = pokeball;
         this.attaque = attaque;
+        this.type = type;
     }
 
     public Pokemon() {
@@ -134,5 +136,19 @@ public abstract class Pokemon {
 
     public void setAttaque(Attaque attaque) {
         this.attaque = attaque;
+    }
+
+    public int subirDegats(Degats degats) {
+        if (resistance().contains(degats.getElement())) {
+            System.out.println(vie);
+            return vie -= degats.getMontantDegats() * 0.5;
+        }
+
+        if (faiblesse().contains(degats.getElement())) {
+            System.out.println(vie);
+            return vie -= degats.getMontantDegats() * 2;
+        }
+        System.out.println(vie);
+        return vie -= degats.getMontantDegats();
     }
 }

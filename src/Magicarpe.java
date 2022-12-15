@@ -4,8 +4,8 @@ import java.util.List;
 public class Magicarpe extends Pokemon implements Vulnerabilite {
 
 
-    public Magicarpe(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque) {
-        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque);
+    public Magicarpe(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque, Element type) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
     }
 
     public Element trempette() {
@@ -22,12 +22,12 @@ public class Magicarpe extends Pokemon implements Vulnerabilite {
     public Element charge() {
         System.out.println("Magicarpe utilise Charge");
         vieAdversaire -= 20;
-        return Element.EAU;
+        return Element.NORMAL;
     }
     public Element chargeAdverse() {
         System.out.println("Le Magicarpe adverse utilise Charge");
         vie -= 20;
-        return Element.EAU;
+        return Element.NORMAL;
     }
 
 
@@ -42,6 +42,7 @@ public class Magicarpe extends Pokemon implements Vulnerabilite {
     public List<Element> resistance() {
         return new ArrayList<>() {{
             add(Element.FEU);
+            add(Element.EAU);
         }};
     }
 }

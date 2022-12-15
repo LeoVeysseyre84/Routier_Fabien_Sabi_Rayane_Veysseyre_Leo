@@ -1,5 +1,14 @@
 public enum Element {
     FEU,
     PLANTE,
-    EAU
+    EAU,
+    VOL,
+    TENEBRES,
+    NORMAL,
+    POISON,
+    GLACE
+
+
+
+
 }
