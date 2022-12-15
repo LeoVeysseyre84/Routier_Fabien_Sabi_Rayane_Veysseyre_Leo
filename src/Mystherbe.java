@@ -36,4 +36,15 @@ public class Mystherbe extends Pokemon implements Vulnerabilite{
         }};
     }
 
+    @Override
+    public String toString() {
+        return "Mystherbe{" +
+                "sexe='" + sexe + '\'' +
+                ", numeroPokedex=" + numeroPokedex +
+                ", vie=" + vie +
+                ", vieAdversaire=" + vieAdversaire +
+                ", soin=" + soin +
+                ", type=" + type +
+                '}';
+    }
 }
