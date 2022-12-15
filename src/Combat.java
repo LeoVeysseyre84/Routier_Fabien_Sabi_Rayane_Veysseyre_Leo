@@ -21,16 +21,16 @@ public class Combat extends Pokemon implements Runnable {
     private int choixPokemonAdverse = (int) (Math.random() * 9);
 
     // Instanciations des différents pokemons
-    private Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Element.FEU);
-    private Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Element.PLANTE);
-    private Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Element.EAU);
-    private Magicarpe magicarpe = new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Element.EAU);
-    private Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Element.PLANTE);
-    private Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Element.FEU);
-    private Roucool roucool = new Roucool("Roucool","mâle",16, 100, 100, Soin.BonneSanté, Element.VOL);
-    private Pikachu pikachu = new Pikachu("Pikachu","mâle",25, 100, 100, Soin.BonneSanté, Element.ELECTRIK);
-    private Racaillou racaillou = new Racaillou("Racaillou","mâle",74, 100, 100, Soin.BonneSanté, Element.SOL);
-    private Mewtwo mewtwo = new Mewtwo("Mewtwo", "neutre", 150, 100, 100, Soin.BonneSanté, Element.PSY);
+    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Element.FEU);
+    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Element.PLANTE);
+    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Element.EAU);
+    Magicarpe magicarpe = new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Element.EAU);
+    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Element.PLANTE);
+    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Element.FEU);
+    Roucool roucool = new Roucool("Roucool","mâle",16, 100, 100, Soin.BonneSanté, Element.VOL);
+    Pikachu pikachu = new Pikachu("Pikachu","mâle",25, 100, 100, Soin.BonneSanté, Element.ELECTRIK);
+    Racaillou racaillou = new Racaillou("Racaillou","mâle",74, 100, 100, Soin.BonneSanté, Element.SOL);
+    Mewtwo mewtwo = new Mewtwo("Mewtwo", "neutre", 150, 100, 100, Soin.BonneSanté, Element.PSY);
 
     // Méthodes de la classe
     /**

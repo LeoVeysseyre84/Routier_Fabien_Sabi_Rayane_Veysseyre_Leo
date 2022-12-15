@@ -2,27 +2,6 @@ import java.lang.reflect.Array;
 import java.util.*;
 
 public class Pokedex extends Pokemon implements Runnable  {
-
-
-    ArrayList<Pokemon> test = new ArrayList<>();
-    HashMap<Pokemon, String> stest = new HashMap<>();
-
-
-    public static List<Pokemon> sortByPokedexNumber(List<Pokemon> pokemonList) {
-        // Utiliser l'algorithme de tri par insertion
-        for (int i = 1; i < pokemonList.size(); i++) {
-            Pokemon current = pokemonList.get(i);
-            int j = i - 1;
-            while (j >= 0 && pokemonList.get(j).numeroPokedex > current.numeroPokedex) {
-                pokemonList.set(j + 1, pokemonList.get(j));
-                j = j - 1;
-            }
-            pokemonList.set(j + 1, current);
-        }
-
-        return pokemonList;
-    }
-
     @Override
     public void run() {
         Pokemon[] test = {
@@ -32,14 +11,17 @@ public class Pokedex extends Pokemon implements Runnable  {
                 new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Element.EAU),
                 new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Element.PLANTE),
                 new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Element.FEU),
+                new Roucool("Roucool","mâle",16, 100, 100, Soin.BonneSanté, Element.VOL),
+                new Pikachu("Pikachu","mâle",25, 100, 100, Soin.BonneSanté, Element.ELECTRIK),
+                new Racaillou("Racaillou","mâle",74, 100, 100, Soin.BonneSanté, Element.SOL),
+                new Mewtwo("Mewtwo", "neutre", 150, 100, 100, Soin.BonneSanté, Element.PSY),
         };
 
         List<Pokemon> pokemonList = Arrays.asList(test);
         pokemonList.sort(Comparator.comparingInt(Pokemon::getNumeroPokedex));
-
-        System.out.println(pokemonList);
-        //sortByPokedexNumber(pokemonList);
-
+        for (Pokemon element : pokemonList ) {
+            System.out.println(element);
+        }
     }
 
     @Override
