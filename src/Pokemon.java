@@ -13,7 +13,7 @@
  * un état de santé, un type et une liste de faiblesses et de résistances
  * aux différents éléments.
  *
- * @author [Votre nom]
+ *
  */
 public abstract class Pokemon implements Vulnerabilite {
 
