@@ -4,135 +4,181 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class Combat extends Pokemon implements Runnable {
-    Element type;
-    Element typeAdverse2;
     Pokemon pokemon;
-    String nomAdversaire;
-
     Pokemon pokemonAdverse;
+    int choixPokemonAdverse = (int) (Math.random() * 9);
 
-    Element attaque;
-
-    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas, Element.FEU);
-    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas, Element.PLANTE);
-    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas, Element.EAU);
-    Magicarpe magicarpe = new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas, Element.EAU);
-    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas, Element.PLANTE);
-    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Pokeball.DEDANS, Attaque.AttaquePas, Element.FEU);
-
-    int r = (int) (Math.random() * 5);
-
-//    Dracaufeu dracaufeu;
-
+    Dracaufeu dracaufeu = new Dracaufeu("Dracaufeu", "mâle", 6, 100, 100, Soin.BonneSanté, Element.FEU);
+    Bulbizarre bulbizarre = new Bulbizarre("Bulbizarre", "mâle", 1, 100, 100, Soin.BonneSanté, Element.PLANTE);
+    Carapuce carapuce = new Carapuce("Carapuce", "femelle", 7, 100, 100, Soin.BonneSanté, Element.EAU);
+    Magicarpe magicarpe = new Magicarpe("Magicarpe", "mâle", 129, 100, 100, Soin.BonneSanté, Element.EAU);
+    Mystherbe mystherbe = new Mystherbe("Mystherbe", "mâle", 43, 100, 100, Soin.BonneSanté, Element.PLANTE);
+    Caninos caninos = new Caninos("Caninos", "mâle", 58, 100, 100, Soin.BonneSanté, Element.FEU);
+    Roucool roucool = new Roucool("Roucool","mâle",16, 100, 100, Soin.BonneSanté, Element.VOL);
+    Pikachu pikachu = new Pikachu("Pikachu","mâle",25, 100, 100, Soin.BonneSanté, Element.ELECTRIK);
+    Racaillou racaillou = new Racaillou("Racaillou","mâle",74, 100, 100, Soin.BonneSanté, Element.SOL);
+    Mewtwo mewtwo = new Mewtwo("Mewtwo", "neutre", 150, 100, 100, Soin.BonneSanté, Element.PSY);
     public Combat() {
         super();
     }
 
     public void attaquesAdverses(){
-        if (r == 0) {
-            int r2 = (int) (Math.random() * 2);
-            if (r2 == 0) {
-                Degats degats = dracaufeu.lanceFlammesAdverse();
+        if (choixPokemonAdverse == 0) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = dracaufeu.lanceFlammes();
                 pokemon.subirDegats(degats);
             }
             else {
-                Degats degats = dracaufeu.aeropiqueAdverse();
+                Degats degats = dracaufeu.aeropique();
                 pokemon.subirDegats(degats);
             }
         }
-        if (r == 1) {
-            int r2 = (int) (Math.random() * 2);
-            if (r2 == 0) {
-                Degats degats = dracaufeu.lanceFlammesAdverse();
+        if (choixPokemonAdverse == 1) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = dracaufeu.lanceFlammes();
                 pokemon.subirDegats(degats);
             }
             else {
-                bulbizarre.syntheseAdverse();
+                bulbizarre.synthese();
                 vie = bulbizarre.vie;
             }
         }
-        if (r == 2) {
-            int r2 = (int) (Math.random() * 2);
-            if (r2 == 0) {
-                Degats degats = carapuce.pistoletAOAdverse();
+        if (choixPokemonAdverse == 2) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = carapuce.pistoletAO();
                 pokemon.subirDegats(degats);
             }
             else {
-                Degats degats = carapuce.laserGlaceAdverse();
+                Degats degats = carapuce.laserGlace();
                 pokemon.subirDegats(degats);
             }
         }
-        if (r == 3) {
-            int r2 = (int) (Math.random() * 2);
-            if (r2 == 0) {
-                Degats degats = magicarpe.trempetteAdverse();
+        if (choixPokemonAdverse == 3) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = magicarpe.trempette();
                 pokemon.subirDegats(degats);
             }
             else {
-                Degats degats = magicarpe.chargeAdverse();
+                Degats degats = magicarpe.charge();
                 pokemon.subirDegats(degats);
             }
         }
-        if (r == 4) {
-            int r2 = (int) (Math.random() * 2);
-            if (r2 == 0) {
-                Degats degats = mystherbe.volVieAdverse();
+        if (choixPokemonAdverse == 4) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = mystherbe.volVie();
                 pokemon.subirDegats(degats);
             }
             else {
-                Degats degats = mystherbe.chocVeninAdverse();
+                Degats degats = mystherbe.chocVenin();
                 pokemon.subirDegats(degats);
             }
         }
-        if (r == 5) {
-            int r2 = (int) (Math.random() * 2);
-            if (r2 == 0) {
-                Degats degats = caninos.flammecheAdverse();
+        if (choixPokemonAdverse == 5) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = caninos.flammeche();
                 pokemon.subirDegats(degats);
             }
             else {
-                Degats degats = caninos.morsureAdverse();
+                Degats degats = caninos.morsure();
+                pokemon.subirDegats(degats);
+            }
+        }
+        if (choixPokemonAdverse == 6) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = roucool.tornade();
+                pokemon.subirDegats(degats);
+            }
+            else {
+                Degats degats = roucool.viveAttaque();
+                pokemon.subirDegats(degats);
+            }
+        }
+        if (choixPokemonAdverse == 7) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = pikachu.eclair();
+                pokemon.subirDegats(degats);
+            }
+            else {
+                Degats degats = pikachu.viveAttaque();
+                pokemon.subirDegats(degats);
+            }
+        }
+        if (choixPokemonAdverse == 8) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = racaillou.seisme();
+                pokemon.subirDegats(degats);
+            }
+            else {
+                Degats degats = racaillou.charge();
+                pokemon.subirDegats(degats);
+            }
+        }
+        if (choixPokemonAdverse == 9) {
+            int choixAttaqueAdverse = (int) (Math.random() * 2);
+            if (choixAttaqueAdverse == 0) {
+                Degats degats = mewtwo.psyko();
+                pokemon.subirDegats(degats);
+            }
+            else {
+                Degats degats = mewtwo.meteores();
                 pokemon.subirDegats(degats);
             }
         }
     }
 
     public void run() {
-        if (r == 0) {
+        if (choixPokemonAdverse == 0) {
             pokemonAdverse = dracaufeu;
             System.out.println("Votre adversaire est Dracaufeu");
-            nomAdversaire = dracaufeu.getNom();
-        } else if (r == 1) {
+        } else if (choixPokemonAdverse == 1) {
             pokemonAdverse = bulbizarre;
             System.out.println("Votre adversaire est Bulbizarre");
-            nomAdversaire = bulbizarre.getNom();
-        } else if (r == 2) {
+        } else if (choixPokemonAdverse == 2) {
             pokemonAdverse = carapuce;
             System.out.println("Votre adversaire est Carapuce");
-            nomAdversaire = carapuce.getNom();
-        } else if (r == 3) {
+        } else if (choixPokemonAdverse == 3) {
             pokemonAdverse = magicarpe;
             System.out.println("Votre adversaire est Magicarpe");
-            nomAdversaire = magicarpe.getNom();
-        } else if (r == 4) {
+        } else if (choixPokemonAdverse == 4) {
             pokemonAdverse = mystherbe;
             System.out.println("Votre adversaire est Mystherbe");
-            nomAdversaire = mystherbe.getNom();
-        } else if (r == 5) {
+        } else if (choixPokemonAdverse == 5) {
             pokemonAdverse = caninos;
             System.out.println("Votre adversaire est Caninos");
-            nomAdversaire = caninos.getNom();
+        } else if (choixPokemonAdverse == 6) {
+            pokemonAdverse = roucool;
+            System.out.println("Votre adversaire est Roucool");
+        } else if (choixPokemonAdverse == 7) {
+            pokemonAdverse = pikachu;
+            System.out.println("Votre adversaire est Pikachu");
+        } else if (choixPokemonAdverse == 8) {
+            pokemonAdverse = racaillou;
+            System.out.println("Votre adversaire est Racaillou");
+        } else if (choixPokemonAdverse == 9) {
+            pokemonAdverse = mewtwo;
+            System.out.println("Votre adversaire est Mewtwo");
         }
+
+
         System.out.println("Veuillez choisir un Pokemon :");
         Scanner sc1 = new Scanner(System.in);
-        String choixPokemon = sc1.nextLine();
+        String choixPokemon = sc1.nextLine().toLowerCase();
 
         Soin etatDuPokemon = Soin.BonneSanté;
         Soin etatDuPokemonAdverse = Soin.BonneSanté;
         while (etatDuPokemon != Soin.Mort && etatDuPokemonAdverse != Soin.Mort) {
             System.out.println("Quel attaque voulez-vous utiliser ?");
             switch (choixPokemon) {
-                case "Dracaufeu" -> {
+                case "dracaufeu" -> {
                     pokemon = dracaufeu;
                     System.out.println("1. Lance flammes");
                     System.out.println("2. Aeropique");
@@ -151,9 +197,8 @@ public class Combat extends Pokemon implements Runnable {
                         default -> System.out.println("L'attaque choisit n'existe pas");
                     }
                     attaquesAdverses();
-                    break;
                 }
-                case "Mystherbe" -> {
+                case "mystherbe" -> {
                     pokemon = mystherbe;
                     System.out.println("1. Vol vie");
                     System.out.println("2. Choc venin");
@@ -173,9 +218,8 @@ public class Combat extends Pokemon implements Runnable {
                         default -> System.out.println("L'attaque choisit n'existe pas");
                     }
                     attaquesAdverses();
-                    break;
                 }
-                case "Caninos" -> {
+                case "caninos" -> {
                     pokemon = caninos;
                     System.out.println("1. Flammèche");
                     System.out.println("2. Morsure");
@@ -195,9 +239,8 @@ public class Combat extends Pokemon implements Runnable {
                         default -> System.out.println("L'attaque choisit n'existe pas");
                     }
                     attaquesAdverses();
-                    break;
                 }
-                case "Bulbizarre" -> {
+                case "bulbizarre" -> {
                     pokemon = bulbizarre;
                     System.out.println("1. Fouet lianes");
                     System.out.println("2. Synthèse");
@@ -217,9 +260,8 @@ public class Combat extends Pokemon implements Runnable {
                         default -> System.out.println("L'attaque choisit n'existe pas");
                     }
                     attaquesAdverses();
-                    break;
                 }
-                case "Carapuce" -> {
+                case "carapuce" -> {
                     pokemon = carapuce;
                     System.out.println("1. Pistolet à O");
                     System.out.println("2. Laser glace");
@@ -239,9 +281,8 @@ public class Combat extends Pokemon implements Runnable {
                         default -> System.out.println("L'attaque choisit n'existe pas");
                     }
                     attaquesAdverses();
-                    break;
                 }
-                case "Magicarpe" -> {
+                case "magicarpe" -> {
                     pokemon = magicarpe;
                     System.out.println("1. Trempette");
                     System.out.println("2. Charge");
@@ -261,17 +302,99 @@ public class Combat extends Pokemon implements Runnable {
                         default -> System.out.println("L'attaque choisit n'existe pas");
                     }
                     attaquesAdverses();
-                    break;
+                }
+                case "roucool" -> {
+                    pokemon = roucool;
+                    System.out.println("1. Tornade");
+                    System.out.println("2. Vive attaque");
+
+                    Scanner sc2 = new Scanner(System.in);
+                    String attaqueChoisi = sc2.nextLine().toLowerCase();
+                    switch (attaqueChoisi) {
+                        case "tornade" -> {
+                            Degats degats = roucool.tornade();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+                        case "vive attaque" -> {
+                            Degats degats = roucool.viveAttaque();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+
+                        default -> System.out.println("L'attaque choisit n'existe pas");
+                    }
+                    attaquesAdverses();
+                }
+                case "pikachu" -> {
+                    pokemon = pikachu;
+                    System.out.println("1. Éclair");
+                    System.out.println("2. Vive attaque");
+
+                    Scanner sc2 = new Scanner(System.in);
+                    String attaqueChoisi = sc2.nextLine().toLowerCase();
+                    switch (attaqueChoisi) {
+                        case "éclair" -> {
+                            Degats degats = pikachu.eclair();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+                        case "vive attaque" -> {
+                            Degats degats = pikachu.viveAttaque();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+
+                        default -> System.out.println("L'attaque choisit n'existe pas");
+                    }
+                    attaquesAdverses();
+                }
+                case "racaillou" -> {
+                    pokemon = racaillou;
+                    System.out.println("1. Séisme");
+                    System.out.println("2. Charge");
+
+                    Scanner sc2 = new Scanner(System.in);
+                    String attaqueChoisi = sc2.nextLine().toLowerCase();
+                    switch (attaqueChoisi) {
+                        case "séisme" -> {
+                            Degats degats = racaillou.seisme();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+                        case "charge" -> {
+                            Degats degats = racaillou.charge();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+
+                        default -> System.out.println("L'attaque choisit n'existe pas");
+                    }
+                    attaquesAdverses();
+                }
+                case "mewtwo" -> {
+                    pokemon = mewtwo;
+                    System.out.println("1. Psyko");
+                    System.out.println("2. Météores");
+
+                    Scanner sc2 = new Scanner(System.in);
+                    String attaqueChoisi = sc2.nextLine().toLowerCase();
+                    switch (attaqueChoisi) {
+                        case "psyko" -> {
+                            Degats degats = mewtwo.psyko();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+                        case "météores" -> {
+                            Degats degats = mewtwo.meteores();
+                            pokemonAdverse.subirDegats(degats);
+                        }
+
+                        default -> System.out.println("L'attaque choisit n'existe pas");
+                    }
+                    attaquesAdverses();
                 }
             }
 
-
-            if (vieAdversaire <= 0) {
-                vieAdversaire = 0;
+            if (pokemonAdverse.vie <= 0) {
+                pokemonAdverse.vie = 0;
                 etatDuPokemonAdverse = Soin.Mort;
             }
-            if (vie <= 0) {
-                vie = 0;
+            if (pokemon.vie <= 0) {
+                pokemon.vie = 0;
                 etatDuPokemon = Soin.Mort;
             }
 

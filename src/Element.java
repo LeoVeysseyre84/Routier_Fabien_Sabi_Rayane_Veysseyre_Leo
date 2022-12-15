@@ -6,9 +6,8 @@ public enum Element {
     TENEBRES,
     NORMAL,
     POISON,
-    GLACE
-
-
-
-
+    GLACE,
+    ELECTRIK,
+    SOL,
+    PSY
 }

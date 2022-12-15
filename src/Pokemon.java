@@ -5,82 +5,21 @@ public abstract class Pokemon implements Vulnerabilite {
     int vie = 100;
     int vieAdversaire = 100;
     Soin soin;
-    Pokeball pokeball;
-    Attaque attaque;
     Element type;
 
 
 
-    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque, Element type) {
+    public Pokemon(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
         this.nom = nom;
         this.sexe = sexe;
         this.numeroPokedex = numeroPokedex;
         this.vie = vie;
         this.vieAdversaire = vieAdversaire;
         this.soin = soin;
-        this.pokeball = pokeball;
-        this.attaque = attaque;
         this.type = type;
     }
 
-    public Pokemon() {
-
-    }
-
-    // Etat de santé du Pokemon
-    public void bonneSanté(){
-        if (!soin.BesoinSoin() && !soin.SeFaitSoigner()){
-            return;
-        }
-        soin = Soin.BonneSanté;
-    }
-    public void faible(){
-        if (soin.BesoinSoin() || soin.SeFaitSoigner()){
-            return;
-        }
-        soin = Soin.Faible;
-    }
-    public void soigne(){
-        if (!soin.BesoinSoin() || soin.SeFaitSoigner()){
-            return;
-        }
-        soin = Soin.Soigne;
-    }
-    public void meurt(){
-        soin = Soin.Mort;
-    }
-
-
-
-    // Etat du Pokemon vis a vis de la Pokeball
-    public void rentreDansPokeball(){
-        if (pokeball.estDansPokeball()){
-            return;
-        }
-        pokeball = Pokeball.DEDANS;
-    }
-    public void sortDePokeball(){
-        if (pokeball.estPasDansPokeball()){
-            return;
-        }
-        pokeball = Pokeball.DEHORS;
-    }
-
-
-
-    // Etat d'attaque du Pokemon
-    public void attaque(){
-        if (attaque.Attaquant()){
-            return;
-        }
-        attaque = Attaque.EstEnTrainDAttaquer;
-    }
-    public void nAttaquePas(){
-        if (attaque.AttaquePas()){
-            return;
-        }
-        attaque = Attaque.AttaquePas;
-    }
+    public Pokemon() {}
 
     public String getNom() {
         return nom;
@@ -114,6 +53,14 @@ public abstract class Pokemon implements Vulnerabilite {
         this.vie = vie;
     }
 
+    public int getVieAdversaire() {
+        return vieAdversaire;
+    }
+
+    public void setVieAdversaire(int vieAdversaire) {
+        this.vieAdversaire = vieAdversaire;
+    }
+
     public Soin getSoin() {
         return soin;
     }
@@ -122,33 +69,22 @@ public abstract class Pokemon implements Vulnerabilite {
         this.soin = soin;
     }
 
-    public Pokeball getPokeball() {
-        return pokeball;
+    public Element getType() {
+        return type;
     }
 
-    public void setPokeball(Pokeball pokeball) {
-        this.pokeball = pokeball;
-    }
-
-    public Attaque getAttaque() {
-        return attaque;
-    }
-
-    public void setAttaque(Attaque attaque) {
-        this.attaque = attaque;
+    public void setType(Element type) {
+        this.type = type;
     }
 
     public int subirDegats(Degats degats) {
         if (resistance().contains(degats.getElement())) {
-            System.out.println(vie);
             return vie -= degats.getMontantDegats() * 0.5;
         }
 
         if (faiblesse().contains(degats.getElement())) {
-            System.out.println(vie);
             return vie -= degats.getMontantDegats() * 2;
         }
-        System.out.println(vie);
         return vie -= degats.getMontantDegats();
     }
 }

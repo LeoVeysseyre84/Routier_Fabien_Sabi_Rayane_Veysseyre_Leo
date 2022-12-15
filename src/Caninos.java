@@ -4,24 +4,16 @@ import java.util.List;
 public class Caninos extends Pokemon implements Vulnerabilite {
 
 
-    public Caninos(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Pokeball pokeball, Attaque attaque, Element type) {
-        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, pokeball, attaque, type);
+    public Caninos(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
+        super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, type);
     }
 
     public Degats flammeche(){
-        System.out.println("Caninos utilise Flammèche");
-        return new Degats (20, Element.FEU);
-    }
-    public Degats flammecheAdverse(){
-        System.out.println("Le Caninos adverse utilise Flammèche");
+        System.out.println("Caninos utilise FlammÃ¨che");
         return new Degats (20, Element.FEU);
     }
     public Degats morsure(){
         System.out.println("Caninos utilise Morsure");
-        return new Degats (20, Element.TENEBRES);
-    }
-    public Degats morsureAdverse(){
-        System.out.println("Le Caninos adverse utilise Morsure");
         return new Degats (20, Element.TENEBRES);
     }
 
@@ -29,6 +21,7 @@ public class Caninos extends Pokemon implements Vulnerabilite {
     public List<Element> faiblesse() {
         return new ArrayList<>() {{
             add(Element.EAU);
+            add(Element.SOL);
         }};
     }
 
@@ -41,4 +34,16 @@ public class Caninos extends Pokemon implements Vulnerabilite {
         }};
     }
 
+    @Override
+    public String toString() {
+        return "Caninos{" +
+                "nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", numeroPokedex=" + numeroPokedex +
+                ", vie=" + vie +
+                ", vieAdversaire=" + vieAdversaire +
+                ", soin=" + soin +
+                ", type=" + type +
+                '}';
+    }
 }

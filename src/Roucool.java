@@ -1,41 +1,40 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dracaufeu extends Pokemon implements Vulnerabilite {
+public class Roucool extends Pokemon implements Vulnerabilite{
 
-
-    public Dracaufeu(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
+    public Roucool(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, type);
     }
 
-    public Degats lanceFlammes(){
-        System.out.println("Dracaufeu utilise Lance flammes");
-        return new Degats(30, Element.FEU);
-    }
-    public Degats aeropique(){
-        System.out.println("Le Dracaufeu adverse utilise AÃ©ropique");
+    public Degats tornade(){
+        System.out.println("Roucool utilise tornade");
         return new Degats (20, Element.VOL);
+    }
+
+    public Degats viveAttaque(){
+        System.out.println("Roucool utilise Vive attaque");
+        return new Degats (20, Element.NORMAL);
     }
 
     @Override
     public List<Element> faiblesse() {
-        return new ArrayList<>() {{
-            add(Element.EAU);
+        return new ArrayList<>(){{
             add(Element.ELECTRIK);
+            add(Element.GLACE);
         }};
     }
 
     @Override
     public List<Element> resistance() {
-        return new ArrayList<>() {{
-            add(Element.PLANTE);
-            add(Element.FEU);
+        return new ArrayList<>(){{
+            add(Element.SOL);
         }};
     }
 
     @Override
     public String toString() {
-        return "Dracaufeu{" +
+        return "Roucool{" +
                 "nom='" + nom + '\'' +
                 ", sexe='" + sexe + '\'' +
                 ", numeroPokedex=" + numeroPokedex +
@@ -45,6 +44,4 @@ public class Dracaufeu extends Pokemon implements Vulnerabilite {
                 ", type=" + type +
                 '}';
     }
-
-
 }

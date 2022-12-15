@@ -1,41 +1,41 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Dracaufeu extends Pokemon implements Vulnerabilite {
+public class Racaillou extends Pokemon implements Vulnerabilite{
 
-
-    public Dracaufeu(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
+    public Racaillou(String nom, String sexe, int numeroPokedex, int vie, int vieAdversaire, Soin soin, Element type) {
         super(nom, sexe, numeroPokedex, vie, vieAdversaire, soin, type);
     }
 
-    public Degats lanceFlammes(){
-        System.out.println("Dracaufeu utilise Lance flammes");
-        return new Degats(30, Element.FEU);
+    public Degats seisme(){
+        System.out.println("Racaillou utilise sÃ©isme");
+        return new Degats (30, Element.SOL);
     }
-    public Degats aeropique(){
-        System.out.println("Le Dracaufeu adverse utilise AÃ©ropique");
-        return new Degats (20, Element.VOL);
+
+    public Degats charge(){
+        System.out.println("Racaillou utilise Vive attaque");
+        return new Degats (20, Element.NORMAL);
     }
 
     @Override
     public List<Element> faiblesse() {
-        return new ArrayList<>() {{
+        return new ArrayList<>(){{
             add(Element.EAU);
-            add(Element.ELECTRIK);
+            add(Element.PLANTE);
+            add(Element.GLACE);
         }};
     }
 
     @Override
     public List<Element> resistance() {
-        return new ArrayList<>() {{
-            add(Element.PLANTE);
-            add(Element.FEU);
+        return new ArrayList<>(){{
+            add(Element.POISON);
         }};
     }
 
     @Override
     public String toString() {
-        return "Dracaufeu{" +
+        return "Racaillou{" +
                 "nom='" + nom + '\'' +
                 ", sexe='" + sexe + '\'' +
                 ", numeroPokedex=" + numeroPokedex +
@@ -45,6 +45,4 @@ public class Dracaufeu extends Pokemon implements Vulnerabilite {
                 ", type=" + type +
                 '}';
     }
-
-
 }
