@@ -212,7 +212,20 @@ public class Combat extends Pokemon implements Runnable {
             System.out.println("Votre adversaire est Mewtwo");
         }
 
-
+        System.out.println("--------------------");
+        System.out.println("Liste des Pokemon disponibles : ");
+        System.out.println("1. Dracaufeu");
+        System.out.println("2. Bulbizarre");
+        System.out.println("3. Carapuce");
+        System.out.println("4. Magicarpe");
+        System.out.println("5. Mystherbe");
+        System.out.println("6. Caninos");
+        System.out.println("7. Roucool");
+        System.out.println("8. Pikachu");
+        System.out.println("9. Racaillou");
+        System.out.println("10. Mewtwo");
+        System.out.println("--------------------");
+        
         System.out.println("Veuillez choisir un Pokemon :");
         Scanner sc1 = new Scanner(System.in);
         String choixPokemon = sc1.nextLine().toLowerCase();
